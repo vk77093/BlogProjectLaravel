@@ -23,3 +23,6 @@ Route::resource('admin/users','AdminUserController');
 Route::get('/admin',function(){
   return view('admin.users.index');
 });
+Route::get('/shows',function(){
+  return view('admin.users.show');
+});

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <h2>Create Users</h2>
-{!!Form::open(['method'=>'POST','action'=>'AdminUserController@create'])!!}
+{!!Form::open(['method'=>'POST','action'=>'AdminUserController@store','files'=>'true'])!!}
 <div class="form-group">
   {!!Form::label('name','Name:')!!}
   {!!Form::text('name',null,['class'=>'form-control'])!!}
@@ -20,12 +20,25 @@
   //{!!Form::text('status',null,['class'=>'form-control'])!!}
 </div> -->
 <div class="form-group">
-{!!Form::label('status','Status:')!!}
-{!!Form::select('status',array(1=>'Active',0=>'Non Active'),0,['class'=>'form-control'])!!}
+{!!Form::label('files','Files:')!!}
+{!!Form::file('files',null,['class'=>'form-control'])!!}
+</div>
+<div class="form-group">
+{!!Form::label('is_active','Status:')!!}
+{!!Form::select('is_active',array(1=>'Active',0=>'Non Active'),0,['class'=>'form-control'])!!}
 
+</div>
+<div class="form-group">
+  {!!Form::label('password','Password:')!!}
+  {!!Form::password('password',['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
 {!!Form::submit('Create User',['class'=>'btn btn-primary'])!!}
 </div>
 {!!Form::close()!!}
+
+@include('includes.formError')
+
+
+
 @stop
