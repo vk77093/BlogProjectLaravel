@@ -20,8 +20,8 @@
   //{!!Form::text('status',null,['class'=>'form-control'])!!}
 </div> -->
 <div class="form-group">
-{!!Form::label('files','Files:')!!}
-{!!Form::file('files',null,['class'=>'form-control'])!!}
+{!!Form::label('photo_id','Files:')!!}
+{!!Form::file('photo_id',null,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
 {!!Form::label('is_active','Status:')!!}

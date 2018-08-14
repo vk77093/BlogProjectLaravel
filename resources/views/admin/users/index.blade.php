@@ -5,6 +5,7 @@
    <thead>
      <tr>
        <th>Id</th>
+       <th>Photo</th>
        <th>Name</th>
        <th>Email</th>
        <th>Roles</th>
@@ -19,6 +20,13 @@
      @foreach($users as $user)
      <tr>
        <td>{{$user->id}}</td>
+       <!-- <td>
+         <img height="50" src="/images/{{$user->photo ? $user->photo->file:'No user Photo'}}"  alt="alps"/>
+       </td> -->
+       <!--- parising data with accessors--->
+       <td>
+         <img height="30" src="{{$user->photo ? $user->photo->file:'No user Photo'}}"  alt="alps" />
+       </td>
        <td>{{$user->name}}</td>
        <td>{{$user->email}}</td>
        <td>{{$user->role->name}}</td>
