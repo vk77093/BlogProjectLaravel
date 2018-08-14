@@ -84,7 +84,10 @@ return redirect('/admin/users');
      */
     public function edit($id)
     {
-        //
+      $user=User::find($id);
+       $roles=Role::lists('name','id')->all();
+        return view('admin.users.update',compact('user','roles'));
+          echo "hello buddy";
     }
 
     /**
@@ -96,7 +99,7 @@ return redirect('/admin/users');
      */
     public function update(Request $request, $id)
     {
-        //
+      //  return view('admin.users.update');
     }
 
     /**
