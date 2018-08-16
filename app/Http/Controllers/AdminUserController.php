@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\EdituserRequest;
 use App\User;
 use App\Role;
 use App\Photo;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class AdminUserController extends Controller
 {
@@ -52,16 +54,24 @@ class AdminUserController extends Controller
         // }else{
         //   return "photo is not added";
         // }
-        $input=$request->all();
+        if(trim($request->password=='')){
+          $input=$request->except('password');
+
+        }else {
+            $input=$request->all();
+            $input['password']=bcrypt($request->password);
+        }
+
         if($file=$request->file('photo_id')){
           $name=time().$file->getClientOriginalName();
           $file->move('images',$name);
           $photo=Photo::create(['file'=>$name]);
           $input['photo_id']=$photo->id;
         }
-        $input['password']=bcrypt($request->password);
+
         User::create($input);
-return redirect('/admin/users');
+        Session::flash('create_user','You succesfully create the User');
+       return redirect('/admin/users');
     }
 
 
@@ -97,9 +107,29 @@ return redirect('/admin/users');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EdituserRequest $request, $id)
     {
       //  return view('admin.users.update');
+    //  return $request->all();
+    if(trim($request->password=='')){
+      $input=$request->except('password');
+    }else{
+      $input=$request->all();
+      //$input['password']=bcrypt($request->password);
+    }
+    $user=User::findOrFail($id);
+$input=$request->all();
+    if($file=$request->file('photo_id')){
+      $name=time().$file->getClientOriginalName();
+      $file->move('images',$name);
+      $photo=Photo::create(['file'=>$name]);
+      $input['photo_id']=$photo->id;
+    }
+    $input['password']=bcrypt($request->password);
+    $user->update($input);
+    Session::flash('update_user','You recently updated the User');
+    return redirect('/admin/users');
+
     }
 
     /**
@@ -110,6 +140,10 @@ return redirect('/admin/users');
      */
     public function destroy($id)
     {
-        //
+        $user=User::findOrFail($id)->delete();
+        Session::flash('deleted_user','You succesfully deleted the user');
+        return redirect('/admin/users');
+
+        //return "data can be delete";
     }
 }

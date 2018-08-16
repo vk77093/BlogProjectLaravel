@@ -12,17 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/welcome');
 });
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-Route::resource('admin/users','AdminUserController');
+//Route::get('/home', 'HomeController@index');
 
-Route::get('/admin',function(){
-  return view('admin.users.index');
+Route::group(['middleware'=>'admin'],function(){
+Route::resource('admin/users','AdminUserController');
 });
-Route::get('/shows',function(){
-  return view('admin.users.show');
-});
+
+
+// Route::get('/admin',function(){
+//   return view('admin.users.index');
+// });
+// Route::get('/shows',function(){
+//   return view('admin.users.show');
+// });

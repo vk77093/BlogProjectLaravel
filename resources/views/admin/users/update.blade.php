@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('content')
+<div class="row">
+
+
+<div class="col-sm-3">
+<img src="{{$user->photo ? $user->photo->file:'/images/noImages.jpg'}}" alt="alps"class="img-responsive img-rounded" />
+
+</div>
 <h2>Edit Or Update Users</h2>
+<div class="col-sm-9">
 {!!Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>'true'])!!}
 <div class="form-group">
   {!!Form::label('name','Name:')!!}
@@ -25,7 +33,7 @@
 </div>
 <div class="form-group">
 {!!Form::label('is_active','Status:')!!}
-{!!Form::select('is_active',array(1=>'Active',0=>'Non Active'),0,['class'=>'form-control'])!!}
+{!!Form::select('is_active',array(1=>'Active',0=>'Non Active'),null,['class'=>'form-control'])!!}
 
 </div>
 <div class="form-group">
@@ -33,11 +41,21 @@
   {!!Form::password('password',['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
-{!!Form::submit('Create User',['class'=>'btn btn-primary'])!!}
+{!!Form::submit('Update User',['class'=>'btn btn-primary col-sm-3'])!!}
 </div>
 {!!Form::close()!!}
 
-@include('includes.formError')
+{!!Form::open(['method'=>'DELETE','action'=>['AdminUserController@destroy',$user->id]])!!}
+{!!Form::submit('Delete User',['class'=>'btn btn-danger col-sm-3'])!!}
+{!!Form::close()!!}
+</div>
+
+</div>
+
+<div class="row">
+  @include('includes.formError')
+</div>
+
 
 
 

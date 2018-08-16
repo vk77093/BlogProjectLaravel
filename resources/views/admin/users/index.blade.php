@@ -1,5 +1,20 @@
 @extends('layouts.admin')
 @section('content')
+@if(Session::has('deleted_user'))
+<p class="alert alert-danger">
+  {{session('deleted_user')}}
+</p>
+@endif
+@if(Session::has('create_user'))
+<p class="alert alert-success">
+  {{session('create_user')}}
+</p>
+@endif
+@if(Session::has('update_user'))
+<p class="alert alert-success">
+  {{session('update_user')}}
+</p>
+@endif
 <h2>User List</h2>
 <table class="table table-hover">
    <thead>
@@ -25,7 +40,7 @@
        </td> -->
        <!--- parising data with accessors--->
        <td>
-         <img height="30" src="{{$user->photo ? $user->photo->file:'No user Photo'}}"  alt="alps" />
+         <img height="30" src="{{$user->photo ? $user->photo->file:'/images/noImages.jpg'}}"alt="alps" />
        </td>
        <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
        <td>{{$user->email}}</td>
