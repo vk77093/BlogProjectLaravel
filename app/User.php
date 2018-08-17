@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','is_active','photo_id'
+        'name','email', 'password','role_id','is_active','photo_id'
     ];
 
     /**
@@ -33,6 +33,30 @@ class User extends Authenticatable
       if($this->role->name=='administrator'){
         return true;
       }
-      return false;
+      // elseif ($this->role->name=='subscriber') {
+      //   return redirect('/subscriber/index');
+      //   // code...
+      // }elseif ($this->role->name=='author') {
+      //   return redirect('/HR/index');
+      // }
+      else {
+        return false;
+      }
+
+    }
+    public function isSubscriber(){
+      if($this->role->name=='subscriber'){
+        return true;
+      }else {
+        return false;
+      }
+    }
+
+    public function isAuthor(){
+      if($this->role->name=='author'){
+        return true;
+      }else{
+        return false;
+      }
     }
 }

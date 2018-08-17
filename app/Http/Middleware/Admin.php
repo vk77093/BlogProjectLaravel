@@ -22,7 +22,14 @@ class Admin
           return $next($request);
           //return redirect('admin/users');
         }
+
+
       }
+      // elseif (Auth::user()->isSubscriber()) {
+      //   return redirect('subscriber/index');
+      // }elseif (Auth::user()->isAuthor()) {
+      //   return redirect('HR/index');
+      // }
       return redirect('404');
         //return $next($request);
     }
