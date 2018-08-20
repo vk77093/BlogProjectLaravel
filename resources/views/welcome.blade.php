@@ -40,8 +40,10 @@
             <div class="content">
                 <div class="title">Laravel 5</div>
                 <h4>hello i am The main application interface Of Codehacking 2</h4>
+                <a href="/login">Log In Page</a>
             </div>
         </div>
+
 
     </body>
 </html>
