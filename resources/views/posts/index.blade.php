@@ -26,7 +26,7 @@
     {{$post->category ? $post->category->name:'UnCategorized'}}
   </td>
   <!-- <td>{{$post->user_id}}</td> -->
-  <td>{{$post->user->name}}</td>
+  <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->user->name}}</td></a>
   <!-- <td>{{$post->photo_id}}</td> -->
   <td>
     <img height="30" src="{{$post->photo ? $post->photo->file:'/images/noImages.jpg'}}"alt="alps" />
