@@ -1,6 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
+@if(Session::has('deleted_post'))
+<p class="alert alert-danger">
+{{session('deleted_post')}}
+</p>
+@endif
+@if(Session::has('create_post'))
+<p class="alert alert-info">
+  {{session('create_post')}}
+</p>
+@endif
+@if(Session::has('update_psot'))
+<p class="alert alert-info">
+  {{session('update_psot')}}
+</p>
+@endif
+
 <h3>Post section</h3>
 <table class="table table-hover">
    <thead>

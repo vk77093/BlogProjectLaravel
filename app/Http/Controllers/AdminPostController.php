@@ -53,6 +53,7 @@ class AdminPostController extends Controller
     {
       $input=$request->all();
       $user=Auth::user();
+      $user->posts();
       if($file=$request->file('photo_id')){
         $name=time().$file->getClientOriginalName();
         $file->move('images',$name);
@@ -60,6 +61,7 @@ class AdminPostController extends Controller
         $input['photo_id']=$photo->id;
       }
       $user->posts()->create($input);
+      Session::flash('create_post','A new User Post Is Created');
       return redirect('/admin/posts');
 
         //return $request->all();
@@ -98,15 +100,25 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input=$request->all();
+      //return $request->all()
+      $input = $request->all();
+  $categories=Categories::lists('name','id')->all();
         if($file=$request->file('photo_id')){
-          $name=time().$file->getClientOriginalName();
-          $file->move('images',$name);
-          $photo=Photo::create(['file'=>$name]);
-          $input['photo_id']=$photo->id;
+            $name = time().$file->getClientOriginalName();
+            $file->move('images',$name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+
         }
-        Auth::user()->posts()->whereId($id)->first()->update($input);
-        return redirect('/admin/posts');
+        // else{
+        //     $post = Post::findOrFail($id);
+        //     $input['photo_id'] = $post->photo->id;
+        // }
+
+        Auth::user()->posts()->where('id',$id)->first()->update($input);
+        Session::flash('update_psot','One Post is Updated');
+      // posts()->where('id',$id)->first()->update($input);
+        return redirect('admin/posts');
     }
 
     /**
@@ -117,6 +129,10 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::findOrFail($id);
+      //  unlink('public_path()'.$post->photo->file);
+        $post->delete();
+        Session::flash('deleted_post','You sucessfully deleted the Post');
+        return redirect('/admin/posts');
     }
 }

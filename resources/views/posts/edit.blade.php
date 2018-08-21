@@ -24,9 +24,11 @@
   {!!Form::textarea('body',null,['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
-  {!!Form::submit('Update Post',['class'=>'btn btn-primary'])!!}
+  {!!Form::submit('Update Post',['class'=>'btn btn-primary col-sm-3'])!!}
 </div>
 {!!Form::close()!!}
+{!!Form::open(['method'=>'DELETE','action'=>['AdminPostController@destroy',$post->id]])!!}
+{!!Form::submit('Delete User',['class'=>'btn btn-danger col-sm-3'])!!}
 </div>
 <div class="row">
   @include('includes.formError')
