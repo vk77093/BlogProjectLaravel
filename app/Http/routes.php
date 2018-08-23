@@ -16,12 +16,15 @@ Route::get('/', function () {
 });
 
 Route::auth();
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
 
 Route::group(['middleware'=>'admin'],function(){
 Route::resource('admin/users','AdminUserController');
 Route::resource('admin/posts','AdminPostController');
 Route::resource('admin/category','AdminCategoryController');
 Route::resource('admin/media','AdminMediaController');
+Route::resource('admin/comments','PostCommentsController');
+Route::resource('admin/comments/replies','PostCommentsRepliesConroller');
 Route::get('/home', 'HomeController@index');
 });
 

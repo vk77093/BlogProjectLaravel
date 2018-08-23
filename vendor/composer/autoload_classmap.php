@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddPhotoCol' => $baseDir . '/database/migrations/2018_08_23_083315_add_photo_col.php',
     'AddUserPhotoId' => $baseDir . '/database/migrations/2018_08_13_111112_add_user_photo_id.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2018_08_20_103740_create_categories_table.php',
+    'CreateCommentsRepliesTable' => $baseDir . '/database/migrations/2018_08_22_102313_create_comments_replies_table.php',
+    'CreateCommentsTable' => $baseDir . '/database/migrations/2018_08_22_102245_create_comments_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePhotosTable' => $baseDir . '/database/migrations/2018_08_13_121918_create_photos_table.php',
     'CreatePostsTable' => $baseDir . '/database/migrations/2018_08_17_105422_create_posts_table.php',

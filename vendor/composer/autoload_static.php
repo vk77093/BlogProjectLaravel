@@ -266,8 +266,11 @@ class ComposerStaticInitd6624c064200342bf99aec91d5ffe22d
     );
 
     public static $classMap = array (
+        'AddPhotoCol' => __DIR__ . '/../..' . '/database/migrations/2018_08_23_083315_add_photo_col.php',
         'AddUserPhotoId' => __DIR__ . '/../..' . '/database/migrations/2018_08_13_111112_add_user_photo_id.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2018_08_20_103740_create_categories_table.php',
+        'CreateCommentsRepliesTable' => __DIR__ . '/../..' . '/database/migrations/2018_08_22_102313_create_comments_replies_table.php',
+        'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2018_08_22_102245_create_comments_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePhotosTable' => __DIR__ . '/../..' . '/database/migrations/2018_08_13_121918_create_photos_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2018_08_17_105422_create_posts_table.php',
