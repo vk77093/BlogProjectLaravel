@@ -27,6 +27,9 @@ Route::resource('admin/comments','PostCommentsController');
 Route::resource('admin/comments/replies','PostCommentsRepliesConroller');
 Route::get('/home', 'HomeController@index');
 });
+Route::group(['middleware'=>'auth'],function(){
+  Route::post('comments/reply','PostCommentsRepliesConroller@createReply');
+});
 
 
 // Route::get('/admin',function(){

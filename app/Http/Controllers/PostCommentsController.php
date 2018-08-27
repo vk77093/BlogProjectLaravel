@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Photo;
+use App\Post;
 use App\Comments;
 use Auth;
 
@@ -66,6 +67,10 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
+      // $post=Post::findOrFail($id);
+      // $comment=$post->comments();
+      // //$comment=Comments::all();
+      // return view('admin.comments.show',compact('comment'));
 
     }
 
@@ -89,7 +94,9 @@ class PostCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $cmt=Comments::findOrFail($id);
+      $cmt->update($request->all());
+      return redirect()->back();
     }
 
     /**
@@ -100,6 +107,7 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $del=Comments::findOrFail($id)->delete();
+        return redirect('admin/comments');
     }
 }

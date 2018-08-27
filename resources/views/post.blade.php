@@ -1,6 +1,8 @@
 @extends('layouts.blog-post')
 
 @section('content')
+
+
 <div class="row">
 
     <!-- Blog Post Content Column -->
@@ -41,6 +43,7 @@
           {{session('cmt_msg')}}
         </p>
         @endif
+        @if(Auth::check())
         <div class="well">
             <h4>Leave a Comment:</h4>
 {!!Form::open(['method'=>'POST','action'=>'PostCommentsController@store'])!!}
@@ -58,15 +61,16 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form> -->
         </div>
-
+@endif
         <hr>
 
         <!-- Posted Comments -->
 
         <!-- Comment -->
+
         <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                <img class="media-object" src="" alt="">
             </a>
             <div class="media-body">
                 <h4 class="media-heading">Start Bootstrap
@@ -74,7 +78,22 @@
                 </h4>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
             </div>
+            @if(Session::has('cmt_msgReply'))
+            <p class="alert alert-success">
+              {{session('cmt_msgReply')}}
+            </p>
+            @endif
+            <div class="form-group">
+              {!!Form::open(['method'=>'post','action'=>'PostCommentsRepliesConroller@createReply'])!!}
+              {!!Form::label('body','BODY:')!!}
+              {!!Form::textarea('body',null,['class'=>'form-control','rows'=>'1'])!!}
+
+              {!! Form::hidden('comment_id', $post->id) !!}
+              {!!Form::submit('Reply',['class'=>'bt btn-info'])!!}
+              {!!Form::close()!!}
+            </div>
         </div>
+
 
         <!-- Comment -->
         <div class="media">
@@ -86,6 +105,7 @@
                     <small>August 25, 2014 at 9:30 PM</small>
                 </h4>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
                 <!-- Nested Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
@@ -162,4 +182,5 @@
     </div>
 
 </div>
+
 @endsection

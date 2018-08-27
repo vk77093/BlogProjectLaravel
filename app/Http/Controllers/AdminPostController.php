@@ -10,6 +10,7 @@ use App\User;
 use App\Photo;
 use App\Role;
 use App\Categories;
+use App\Comments;
 use Auth;
 
 
@@ -75,7 +76,10 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        //
+      $post=Post::findOrFail($id);
+      $comment=$post->comments();
+      $comment=Comments::all();
+      return view('admin.comments.show',compact('comment'));
     }
 
     /**
@@ -137,7 +141,8 @@ class AdminPostController extends Controller
     }
     public function post($id){
       $post=Post::findOrFail($id);
+      //$comment=$post->comments()->whereIsActive(1)->get();
       //return $post->all();
-     return view('/post',compact('post'));
+     return view('/post',compact('post','comment'));
     }
 }
