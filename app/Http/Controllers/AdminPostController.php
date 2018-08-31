@@ -28,7 +28,8 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-      $posts=Post::all();
+      //$posts=Post::all()->paginate(2);
+      $posts=Post::paginate(2);
 
         return view('posts.index',compact('posts'));
     }
@@ -141,7 +142,7 @@ class AdminPostController extends Controller
     }
     public function post($id){
       $post=Post::findOrFail($id);
-      //$comment=$post->comments()->whereIsActive(1)->get();
+      $comment=$post->comments()->whereIsActive('1')->get();
       //return $post->all();
      return view('/post',compact('post','comment'));
     }
