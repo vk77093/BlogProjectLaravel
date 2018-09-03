@@ -41,7 +41,7 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-      $categories=Categories::lists('name','id')->all();
+      $categories=Categories::pluck('name','id')->all();
         return view('posts.create',compact('categories'));
     }
 
@@ -92,7 +92,7 @@ class AdminPostController extends Controller
     public function edit($id)
     {
         $post=Post::findOrFail($id);
-        $categories=Categories::lists('name','id')->all();
+        $categories=Categories::pluck('name','id')->all();
         return view('posts.edit',compact('post','categories'));
     }
 
@@ -107,7 +107,7 @@ class AdminPostController extends Controller
     {
       //return $request->all()
       $input = $request->all();
-  $categories=Categories::lists('name','id')->all();
+  $categories=Categories::pluck('name','id')->all();
         if($file=$request->file('photo_id')){
             $name = time().$file->getClientOriginalName();
             $file->move('images',$name);
