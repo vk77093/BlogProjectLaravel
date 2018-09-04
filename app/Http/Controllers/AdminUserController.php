@@ -25,12 +25,16 @@ class AdminUserController extends Controller
 
         return view('admin.users.index',compact('users'));
     }
+    // public function dashbord(){
+    //   return view('admin.users.dashbord');
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
       $roles=Role::pluck('name','id')->all();

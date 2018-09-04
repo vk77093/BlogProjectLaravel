@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@include('includes.tinymce')
 <h3>Create Post</h3>
 <div class="row">
 

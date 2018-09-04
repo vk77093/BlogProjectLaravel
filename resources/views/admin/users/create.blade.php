@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@include('includes.tinymce')
 <h2>Create Users</h2>
 {!!Form::open(['method'=>'POST','action'=>'AdminUserController@store','files'=>'true'])!!}
 <div class="form-group">

@@ -123,7 +123,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="/dashbord"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
@@ -357,6 +357,7 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+
 <script src="{{asset('js/libs.js')}}"></script>
 @yield('scripts')
 
