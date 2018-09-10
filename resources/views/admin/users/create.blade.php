@@ -8,10 +8,12 @@
   {!!Form::text('name',null,['class'=>'form-control'])!!}
 </div>
 
+
 <div class="form-group">
 {!!Form::label('email','Email')!!}
 {!!Form::email('email',null,['class'=>'form-control'])!!}
 </div>
+
 <div class="form-group">
   {!!Form::label('role_id','Role:')!!}
   {!!Form::select('role_id',['0'=>'---Choose Role----']+$roles ,null,['class'=>'form-control'])!!}

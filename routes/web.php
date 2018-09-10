@@ -14,15 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashbord',function(){
-  return view('/dashbord');
+// Route::get('/dashbord',function(){
+//   return view('/dashbord');
+// });
+Route::get('/attendence',function(){
+  return view ('admin.users.attendence');
 });
+// Route::get('/dashbord','AdminController@index');
  Route::auth();
  Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
  Route::get('/logout','Auth\LoginController@logout');
-
+Route::get('/dashbord','AdminController@index');
 Route::group(['middleware'=>'admin','as'=>'admin.'],function(){
+
 Route::resource('admin/users','AdminUserController');
+//Route::get('admin/users','AdminUserController@attend');
 Route::resource('admin/posts','AdminPostController');
 Route::resource('admin/category','AdminCategoryController');
 Route::resource('admin/media','AdminMediaController');

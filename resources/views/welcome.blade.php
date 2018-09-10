@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Blog Page</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -43,7 +43,22 @@
                 <a href="/login">Log In Page</a>
             </div>
         </div>
+        <!-- <div class="container">
+            <div class="content">
+                <div class="title">Foodcoast Inetrnational</div>
+                <h4 class="lead">Welcome to the HR Mangement System</h4>
+                <a href="/login">Log In Page</a>
+            </div>
+        </div> -->
 
 
-    </body>
-</html>
+    <!-- </body>
+</html> -->
+@extends('layouts.blog-home')
+<link href="{{asset('css/libs.css')}}" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="{{asset('css/blog-home.css')}}" rel="stylesheet">
+@section('content')
+
+@endsection

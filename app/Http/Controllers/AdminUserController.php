@@ -154,4 +154,7 @@ $input=$request->all();
 
         //return "data can be delete";
     }
+    // public function attend(){
+    //   return view('admin.users.attendence');
+    // }
 }
