@@ -16,7 +16,9 @@
         ["Users", {{$userCount}}, "#b87333"],
         ["Posts", {{$postCount}}, "silver"],
         ["Categories", {{$catCount}}, "gold"],
-        ["Comments", {{$cmtCount}}, "color: #e5e4e2"]
+        ["Comments", {{$cmtCount}}, "color: #e5e4e2"],
+        ["ApproveCmt", {{$approvedCmt}}, "red"],
+        ["UnApproveCmt", {{$unapproveCmt}}, "blue"]
       ]);
 
       var view = new google.visualization.DataView(data);

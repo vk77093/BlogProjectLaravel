@@ -8,8 +8,10 @@ use App\Http\Requests\EdituserRequest;
 use App\User;
 use App\Role;
 use App\Photo;
+use App\Post;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
 {
@@ -157,4 +159,12 @@ $input=$request->all();
     // public function attend(){
     //   return view('admin.users.attendence');
     // }
+    public function userView($id){
+      //$post=Post::where('user_id',$id);
+        // $post=DB::table('users')->where('user_id', $id);
+        //$post = DB::select('select * from posts where user_id = ?', [$id]);
+        $post=User::posts()->where('user_id', $id)->get();
+      return view('/userViews',compact('post'));
+    }
+    //select all post from user where user_id=
 }

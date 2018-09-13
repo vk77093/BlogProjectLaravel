@@ -14,6 +14,8 @@ class AdminController extends Controller
       $cmtCount=Comments::count();
       $catCount=Categories::count();
       $userCount=User::count();
-      return view('dashbord',compact('postCount','cmtCount','catCount','userCount'));
+      $approvedCmt=Comments::where('is_active','1')->count();
+      $unapproveCmt=Comments::where('is_active','0')->count();
+      return view('dashbord',compact('postCount','cmtCount','catCount','userCount','approvedCmt','unapproveCmt'));
     }
 }

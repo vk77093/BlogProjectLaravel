@@ -60,5 +60,48 @@
 <!-- Custom CSS -->
 <link href="{{asset('css/blog-home.css')}}" rel="stylesheet">
 @section('content')
+<div class="col-md-8">
+@if($postsData)
+@foreach($postsData as $post)
+    <h1 class="page-header">
+        Page Heading
+        <small>Secondary Text</small>
+    </h1>
 
+    <!-- First Blog Post -->
+    <h2>
+        <a href="{{route('home.post',$post->id)}}">{{$post->title}}</a>
+    </h2>
+    <p class="lead">
+        by <a href="{{route('user.name',$post->user->id)}}">{{$post->user->name}}</a>
+    </p>
+    <p><span class="glyphicon glyphicon-time"></span>{{$post->created_at->diffForHumans()}}</p>
+    <hr>
+    <img class="img-responsive" src="{{$post->photo ? $post->photo->file:'/images/noImages.jpg'}}" alt="POST Photo">
+    <hr>
+    <p>{{str_limit($post->body,100)}}</p>
+    <a class="btn btn-primary" href="{{route('home.post',$post->id)}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+    <hr>
+
+    @endforeach
+    @endif
+
+
+    <!-- Pager -->
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-5">
+        {{$postsData->render()}}
+      </div>
+    </div>
+    <!-- <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; Older</a>
+        </li>
+        <li class="next">
+            <a href="#">Newer &rarr;</a>
+        </li>
+    </ul> -->
+
+</div>
 @endsection

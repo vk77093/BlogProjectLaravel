@@ -54,7 +54,7 @@
    </tbody>
  </table>
  <div class="row">
-<div class="cl-sm-6 col-sm-offset-5">
+<div class="col-sm-6 col-sm-offset-5">
   {{$users->render()}}
 </div>
 
