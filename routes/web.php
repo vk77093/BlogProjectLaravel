@@ -23,6 +23,7 @@ Route::get('/attendence',function(){
 });
 // Route::get('/dashbord','AdminController@index');
  Route::auth();
+
  Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
  Route::get('/user/post/{id}',['as'=>'user.name','uses'=>'AdminUserController@userView']);
  Route::get('/logout','Auth\LoginController@logout');

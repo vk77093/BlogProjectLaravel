@@ -18,8 +18,8 @@
 <div class="form-group">
 {!!Form::label('photo_id','Photo:')!!}
 {!!Form::file('photo_id',null,['class'=>'form-control'])!!}
-
 </div>
+
 <div class="form-group">
   {!!Form::label('body','Content:')!!}
   {!!Form::textarea('body',null,['class'=>'form-control'])!!}

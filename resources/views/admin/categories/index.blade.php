@@ -11,9 +11,9 @@
 <div class="form-group">
   {!!Form::submit('Create Category',['class'=>'form-control btn btn-primary'])!!}
 </div>
-
-{!!Form::close()!!}
 </div>
+{!!Form::close()!!}
+
 <div class="col-sm-6">
 <h4>View Category</h4>
 
